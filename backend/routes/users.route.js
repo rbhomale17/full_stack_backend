@@ -24,6 +24,17 @@ userRouter.post("/register",registrationMiddleware,async (req,res)=>{
     }
 });
 
+userRouter.post("/create",registrationMiddleware,async (req,res)=>{
+    try {
+            const user = new UserModel(req.body);
+            await user.save();
+            // console.log(req.body);
+        res.send({msg:`Welcome!, ${req.body.name} Your Registration is Successfully. By Create`})
+    } catch (error) {
+        res.send({err:error.message})
+    }
+});
+
 // login route 
 userRouter.post("/login",loginMiddleware,async (req,res)=>{
     const {email} = req.body;
