@@ -12,14 +12,21 @@ app.use(cors());
 // });
 
 app.use('/users',userRouter);
+const getconnection = async ()=>{
+   try {
+     await Connection;
+     console.log("Connected To DB");
+   } catch (error) {
+    console.log(error);
+    console.log("Failed To Connect DB");
+   };
 
-app.listen(Number(process.env.port),async()=>{
-    try {
-        await Connection;
-        console.log("Conected to DB");
-    } catch (error) {
-        console.log(error);
-        console.log("Failed to connected DB");
-    }
+   app.listen(Number(process.env.port),async()=>{
     console.log(`server is started at port ${Number(process.env.port)}`);
 });
+};
+
+function start(){
+    getconnection();
+};
+start();
