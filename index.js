@@ -10,8 +10,9 @@ app.use(cors());
 // app.get("/",(req,res)=>{
 //     res.send("Wlecome to Home page. Prathamesh")
 // });
-
+// console.log(Number(process.env.port),typeof(Number(process.env.port)));
 app.use('/users',userRouter);
+
 const getconnection = async ()=>{
    try {
      await Connection;
@@ -21,8 +22,10 @@ const getconnection = async ()=>{
     console.log("Failed To Connect DB");
    };
 
-   app.listen(Number(process.env.port),async()=>{
-    console.log(`server is started at port ${Number(process.env.port)}`);
+   console.log("reach to server 1")
+   app.listen(4500,async()=>{
+    console.log("reach to server 2")
+    console.log(`server is started at port 4500`);
 });
 };
 
